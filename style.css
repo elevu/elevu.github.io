@@ -12,7 +12,7 @@ header {
 }
 
 body {
-	background-color: purple;
+	background-color: white;
 }
 
 .center {
@@ -32,6 +32,7 @@ h2 {
 
 
 .button {
+    text-align: center;
     background-color: #8f00b3; 
     border: none;
     color: white;
@@ -41,3 +42,4 @@ h2 {
     display: inline-block;
     font-size: 16px;
 }
+
