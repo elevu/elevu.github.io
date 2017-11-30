@@ -3,7 +3,7 @@
 
    $.ajax({
     type: "GET",
-    url: 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?nyckelord="python"',
+    url: 'https://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?nyckelord="python"',
     }).done(function(data) {
       alert("loading");
       $("#ajaxtest").text(JSON.stringify(data));
@@ -18,7 +18,7 @@
 
    $.ajax({
     type: "GET",
-    url: 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?nyckelord="java"',
+    url: 'https://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?nyckelord="java"',
     }).done(function(data) {
 
 
