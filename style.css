@@ -1,0 +1,43 @@
+header {
+	background-color: purple;
+}
+
+#gallery {
+	background-color: rgba(255,0,0,0.1);
+	
+}
+
+#videos {
+	background-color: rgba(0,0,225,0.1);
+}
+
+body {
+	background-color: purple;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+
+
+
+.button {
+    background-color: #8f00b3; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
