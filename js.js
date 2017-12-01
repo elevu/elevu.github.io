@@ -114,3 +114,23 @@ $(".btn").click(function() {
     }
 
 });
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'horizontalBar',
+
+    // The data for our dataset
+    data: {
+        labels: ["Python", "C++", "Scala", "Java", "SQL", "C#", "PHP","Perl","Ruby","Swift", "Scala", "Objective-C", "Haskell", "Clojure"],
+        datasets: [{
+            label: "Programming languages ordered by popularity on Platsbanken",
+            backgroundColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC"],
+            borderColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC"],
+            data: [0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
