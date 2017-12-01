@@ -83,7 +83,7 @@ $(".btn").click(function() {
                         allLanguagesDictionary[13].key],
                 datasets: [{
 
-                    label: "My First dataset",
+                    label: "Programming languages ordered by popularity on Platsbanken",
                     backgroundColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC"],
                     borderColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC"],
                     data: [allLanguagesDictionary[0].value,
