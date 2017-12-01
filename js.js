@@ -1,120 +1,116 @@
+// Made by @elevu
 
-var numJava = 0;
-var numPython = 0;
-var numJavascript = 0;
-var numRuby = 0;
-var numClojure = 0;
+var allLanguagesDictionary = [];
 
- $(".btn").click(function() {
-  $(".text").text("loading . . .");
-   $.ajax({
-    type: "GET",
-    url: 'https://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?nyckelord="java"',
-    }).done(function(data) {
-
-
-      var numOpenings = data.matchningslista.antal_platsannonser;
-      numJava = numOpenings;
-        $("#java-nums").text(numOpenings);
-
-     
-
-    }).fail(function(xhr, status, error) {
-      alert("error " + xhr.responseText);})
-
-       $.ajax({
-    type: "GET",
-    url: 'https://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?nyckelord="python"',
-    }).done(function(data) {
-
-      var numOpenings = data.matchningslista.antal_platsannonser;
-       numPython = numOpenings;
-        $("#python-nums").text(numOpenings);
-
-     
-
-    }).fail(function(xhr, status, error) {
-      alert("error " + xhr.responseText);})
-
-   $.ajax({
-    type: "GET",
-    url: 'https://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?nyckelord="javascript"',
-    }).done(function(data) {
+getAmountJobPostings("C++");
+getAmountJobPostings("Java");
+getAmountJobPostings("JavaScript");
+getAmountJobPostings("Python");
+getAmountJobPostings("Clojure");
+getAmountJobPostings("PHP");
+getAmountJobPostings("Scala");
+getAmountJobPostings("Ruby");
+getAmountJobPostings("Perl");
+getAmountJobPostings("Objective-C");
+getAmountJobPostings("SQL");
+getAmountJobPostings("Haskell");
+getAmountJobPostings("Swift");
+getAmountJobPostings("C#");
 
 
-      var numOpenings = data.matchningslista.antal_platsannonser;
-      numJavascript = numOpenings;
-   $("#javascript-nums").text(numOpenings);
 
-     
+// Gets values from Arbetsförmedlingen API https://www.arbetsformedlingen.se/Globalmeny/Om-webbplatsen/Oppna-data.html
 
-    }).fail(function(xhr, status, error) {
-      alert("error " + xhr.responseText);})
-
-$.ajax({
-    type: "GET",
-    url: 'https://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?nyckelord="ruby"',
-    }).done(function(data) {
-
-
-      var numOpenings = data.matchningslista.antal_platsannonser;
-      numRuby = numOpenings;
-   $("#javascript-nums").text(numOpenings);
-
-     
-
-    }).fail(function(xhr, status, error) {
-      alert("error " + xhr.responseText);})
-
+function getAmountJobPostings(keyWord) {
+    var adress = 'https://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?nyckelord=' + '"' + encodeURIComponent(keyWord) + '"';
     $.ajax({
-    type: "GET",
-    url: 'https://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?nyckelord="clojure"',
+        type: "GET",
+        url: adress,
     }).done(function(data) {
-
-
-      var numOpenings = data.matchningslista.antal_platsannonser;
-      numClojure = numOpenings;
-   $("#javascript-nums").text(numOpenings);
-
-     
+        var numOpenings = data.matchningslista.antal_platsannonser;
+        addObjectToAllLanguagesDictionary(keyWord, numOpenings);
 
     }).fail(function(xhr, status, error) {
-      alert("error " + xhr.responseText);})
+        alert("error " + xhr.responseText);
+    })
+
+}
+
+// Called from  getAmountJobPostings(keyWord), add Objects ex {key:"python", value:"567"} to an array of Objects
+
+function addObjectToAllLanguagesDictionary(keyWord, value) {
+    allLanguagesDictionary.push({
+        key: keyWord,
+        value: value
+    });
 
 
+}
 
-// Data chart
 
-google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawBasic);
+// On click the chart is loaded
 
-function drawBasic() {
+$(".btn").click(function() {
 
-      var data = google.visualization.arrayToDataTable([
-        ['language', 'number of positions',],
-        ['python', numPython],
-        ['java', numJava],
-        ['javascript', numJavascript],
-        ['clojure', numClojure],
-        ['ruby', numRuby]
-      ]);
+    if (allLanguagesDictionary.length < 14) {
+        alert("arbetsformedlingen is not replying!");
 
-      var options = {
-        title: 'positions on arbets',
-        chartArea: {width: '50%'},
-        hAxis: {
-          title: 'total positions',
-          minValue: 0
-        },
-        vAxis: {
-          title: 'language'
-        }
-      };
+    } else {
 
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        allLanguagesDictionary.sort(function(a, b) {
+            return b.value - a.value;
+        });
 
-      chart.draw(data, options);
+        // Chartjs
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: [allLanguagesDictionary[0].key,
+                        allLanguagesDictionary[1].key, 
+                        allLanguagesDictionary[2].key, 
+                        allLanguagesDictionary[3].key, 
+                        allLanguagesDictionary[4].key, 
+                        allLanguagesDictionary[5].key, 
+                        allLanguagesDictionary[6].key, 
+                        allLanguagesDictionary[7].key, 
+                        allLanguagesDictionary[8].key, 
+                        allLanguagesDictionary[9].key, 
+                        allLanguagesDictionary[10].key, 
+                        allLanguagesDictionary[11].key, 
+                        allLanguagesDictionary[12].key, 
+                        allLanguagesDictionary[13].key],
+                datasets: [{
+
+                    label: "My First dataset",
+                    backgroundColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC"],
+                    borderColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC"],
+                    data: [allLanguagesDictionary[0].value,
+                        allLanguagesDictionary[1].value, 
+                        allLanguagesDictionary[2].value, 
+                        allLanguagesDictionary[3].value, 
+                        allLanguagesDictionary[4].value, 
+                        allLanguagesDictionary[5].value, 
+                        allLanguagesDictionary[6].value, 
+                        allLanguagesDictionary[7].value, 
+                        allLanguagesDictionary[8].value, 
+                        allLanguagesDictionary[9].value, 
+                        allLanguagesDictionary[10].value, 
+                        allLanguagesDictionary[11].value, 
+                        allLanguagesDictionary[12].value, 
+                        allLanguagesDictionary[13].value
+
+                    ],
+                    hoverBackgroundColor: '#E2F0F5',
+
+
+                }]
+            },
+
+            options: {}
+        });
+
     }
 
-
-    });
+});
