@@ -115,6 +115,12 @@ $(".btn").click(function() {
 
 });
 
+Chart.scaleService.updateScaleDefaults('linear', {
+    ticks: {
+        max: 700
+    }
+});
+
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -134,3 +140,4 @@ var chart = new Chart(ctx, {
     // Configuration options go here
     options: {}
 });
+
