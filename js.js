@@ -1,7 +1,6 @@
 // Made by @elevu
 
 var allLanguagesDictionary = [];
-var isConnectionFailed = false;
 
 getAmountJobPostings("C++");
 getAmountJobPostings("Java");
@@ -33,7 +32,7 @@ function getAmountJobPostings(keyWord) {
         addObjectToAllLanguagesDictionary(keyWord, numOpenings);
 
     }).fail(function(xhr, status, error) {
-        alert("error " + xhr.responseText);
+        alert("Connections with Arbetsförmedlingen failed, not possible to retreive the data. Error " + xhr.responseText);
     })
 
 }
