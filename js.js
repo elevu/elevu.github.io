@@ -32,10 +32,12 @@ function getAmountJobPostings(keyWord) {
         addObjectToAllLanguagesDictionary(keyWord, numOpenings);
 
     }).fail(function(xhr, status, error) {
-        alert("Connections with Arbetsförmedlingen failed, not possible to retreive the data. Error " + xhr.responseText);
+        // write fail message here, in case
     })
 
 }
+
+
 
 // Called from  getAmountJobPostings(keyWord), add Objects ex {key:"python", value:"567"} to an array of Objects
 
