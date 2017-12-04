@@ -1,6 +1,7 @@
 // Made by @elevu
 
 var allLanguagesDictionary = [];
+var isConnectionFailed = false;
 
 getAmountJobPostings("C++");
 getAmountJobPostings("Java");
@@ -16,6 +17,7 @@ getAmountJobPostings("SQL");
 getAmountJobPostings("Haskell");
 getAmountJobPostings("Swift");
 getAmountJobPostings("C#");
+getAmountJobPostings(".NET");
 
 
 
@@ -52,8 +54,8 @@ function addObjectToAllLanguagesDictionary(keyWord, value) {
 
 $(".btn").click(function() {
 
-    if (allLanguagesDictionary.length < 14) {
-        alert("arbetsformedlingen is not replying!");
+    if (allLanguagesDictionary.length < 15) {
+        alert("The connection with Arbetsförmedlingen is either slow or not working. Try again to click on the button in a few seconds");
 
     } else {
 
@@ -80,12 +82,13 @@ $(".btn").click(function() {
                         allLanguagesDictionary[10].key, 
                         allLanguagesDictionary[11].key, 
                         allLanguagesDictionary[12].key, 
-                        allLanguagesDictionary[13].key],
+                        allLanguagesDictionary[13].key,
+                        allLanguagesDictionary[14].key],
                 datasets: [{
 
-                    label: "Programming languages ordered by popularity on Platsbanken",
-                    backgroundColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC"],
-                    borderColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC"],
+                    label: "Programming languages ordered by popularity on Arbetsförmedlingen's Platsbanken",
+                    backgroundColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC", "#CCCCDD"],
+                    borderColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC","#CCCCDD"],
                     data: [allLanguagesDictionary[0].value,
                         allLanguagesDictionary[1].value, 
                         allLanguagesDictionary[2].value, 
@@ -99,7 +102,8 @@ $(".btn").click(function() {
                         allLanguagesDictionary[10].value, 
                         allLanguagesDictionary[11].value, 
                         allLanguagesDictionary[12].value, 
-                        allLanguagesDictionary[13].value
+                        allLanguagesDictionary[13].value,
+                        allLanguagesDictionary[14].value
 
                     ],
                     hoverBackgroundColor: '#E2F0F5',
@@ -128,12 +132,12 @@ var chart = new Chart(ctx, {
 
     // The data for our dataset
     data: {
-        labels: ["Python", "C++", "Scala", "Java", "SQL", "C#", "PHP","Perl","Ruby","Swift", "Scala", "Objective-C", "Haskell", "Clojure"],
+        labels: ["Python", "C++", "Scala", "Java", "SQL", "C#", "PHP","Perl","Ruby","Swift", "Scala", "Objective-C", "Haskell", "Clojure",".NET"],
         datasets: [{
-            label: "Programming languages ordered by popularity on Platsbanken",
-            backgroundColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC"],
-            borderColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC"],
-            data: [0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0],
+            label: "Programming languages ordered by popularity on Arbetsförmedlingen's Platsbanken",
+            backgroundColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC", "#CCCCDD"],
+            borderColor: ['#FFAACC', "#FFBBCC", "#FFCCCC", "#FFDDCC", "#FFEECC","#FFFFCC", "#CCFFFF", "#CCEEFF", "#CCDDFF", "#CCCCFF","#CCBBFF", "#CCAAFF", "#CCAACC", "#CCBBCC", "#CCCCDD"],
+            data: [0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0],
         }]
     },
 
